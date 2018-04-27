@@ -24,13 +24,11 @@
              tick() {
                this.setState(prevState => ({
                  seconds: prevState.seconds + 1,
-                 // tenths: prevState.tenths + 1
                }));
              }
 
              tickTwo() {
                this.setState(prevState => ({
-                 // seconds: prevState.seconds + 1,
                  tenths: prevState.tenths + 1,
                }));
              }
@@ -68,7 +66,6 @@
            ReactDOM.render(
              <Timer
              image={info.image}/>, document.getElementById('timer')
-
            );
      </script>
   </body>
