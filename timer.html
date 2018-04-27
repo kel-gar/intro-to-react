@@ -15,17 +15,27 @@
            class Timer extends React.Component {
              constructor(props) {
                super(props);
-               this.state = { seconds: 0 };
+               this.state = {
+                 seconds: 0,
+                 tenths: 0
+               };
              }
 
              tick() {
                this.setState(prevState => ({
-                 seconds: prevState.seconds + 1
+                 seconds: prevState.seconds + 1,
+               }));
+             }
+
+             tickTwo() {
+               this.setState(prevState => ({
+                 tenths: prevState.tenths + 1,
                }));
              }
 
              componentDidMount() {
                this.interval = setInterval(() => this.tick(), 1000);
+               this.interval = setInterval(() => this.tickTwo(), 100);
              }
 
              componentWillUnmount() {
@@ -35,14 +45,27 @@
              render() {
                return (
                  <div>
-                   Seconds: {this.state.seconds}
+                  <p>
+                    Seconds: {this.state.seconds}
+                  </p>
+                  <p>
+                    Tenths of Seconds: {this.state.tenths}
+                  </p>
+                  <p>
+                    <img src={this.props.image} alt="Stopwatch Picture"/>
+                  </p>
                  </div>
                );
              }
            }
 
+           const info = {
+             image: './STOPWATCH.jpg',
+           }
+
            ReactDOM.render(
-             <Timer />, document.getElementById('timer')
+             <Timer
+             image={info.image}/>, document.getElementById('timer')
            );
      </script>
   </body>
